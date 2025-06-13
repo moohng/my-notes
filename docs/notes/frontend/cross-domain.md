@@ -60,13 +60,21 @@ location /api {
 - postMessage：window.postMessage()方法可以实现客户端之间的跨域通信。
 - document.domain：通过设置document.domain可以实现不同子域之间的跨域通信。
 
+<template v-if="inIFrame">
+
 ## 测试
 
 #### 跨域发送postMessage消息
 
 <button :class="$style.btn" @click="sendMessage">发送postMessage消息</button>
+</template>
+<template v-else>
+<a :href="'http://demo.codingmo.com/#' + window.location.href">点击这里进行postMessage测试</a>
+</template>
 
 <script lang="ts" setup>
+const inIFrame = window.self !== window.top; // 判断是否在iframe中
+
 const sendMessage = () => {
   const targetOrigin = '*'; // 替换为目标域名
   const message = { text: 'Hello from another domain!' };
