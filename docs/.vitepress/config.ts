@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress';
+import { defineConfig, type DefaultTheme } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -21,47 +21,15 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '笔记', link: '/notes' },
-      { text: '文章', link: '/articles' },
-      { text: '作品', link: '/projects' },
+      { text: '笔记', link: '/notes', activeMatch: '/notes/' },
+      { text: '文章', link: '/articles', activeMatch: '/articles/' },
+      { text: '作品', link: '/projects', activeMatch: '/projects/' },
     ],
-    sidebar: [
-      {
-        text: '介绍',
-        items: [
-          { text: '为什么要写这个知识库？', link: '/why' },
-        ],
-      },
-      {
-        text: '大前端',
-        collapsed: false,
-        items: [
-          { text: 'React', link: '/react' },
-          { text: 'Vue', link: '/vue' },
-          { text: 'uniapp', link: '/uniapp' },
-          { text: 'Flutter', link: '/flutter' },
-        ],
-      },
-      {
-        text: '服务端',
-        items: [
-          { text: 'Java Springboot', link: '/springboot' },
-          { text: 'MySQL', link: '/mysql' },
-        ],
-      },
-      {
-        text: '其他',
-        items: [
-          { text: 'Git', link: '/git' },
-          { text: 'Markdown', link: '/markdown' },
-          { text: 'Linux', link: '/linux' },
-        ],
-      },
-      {
-        text: '未分类',
-        items: [],
-      },
-    ],
+    sidebar: {
+      '/notes/': sidebarNotes(),
+      '/articles/': sidebarArticles(),
+      '/projects/': sidebarProjects(),
+    },
     socialLinks: [{ icon: 'github', link: 'https://github.com/moohng/my-notes' }],
     editLink: {
       pattern: 'https://github.com/moohng/my-notes/edit/main/docs/:path',
@@ -116,3 +84,48 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
 });
+
+function sidebarNotes(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: '介绍',
+      base: '/notes/guide/',
+      items: [{ text: '为什么要写这个知识库？', link: 'why' }],
+    },
+    {
+      text: '大前端',
+      base: '/notes/frontend/',
+      items: [
+        { text: '跨域问题', link: 'cross-domain' },
+        { text: 'uniapp', link: '/uniapp' },
+        { text: 'Flutter', link: '/flutter' },
+      ],
+    },
+    {
+      text: '服务端',
+      base: '/notes/backend/',
+      items: [
+        { text: 'Java Springboot', link: '/springboot' },
+        { text: 'MySQL', link: '/mysql' },
+      ],
+    },
+    {
+      text: '其他',
+      base: '/notes/other/',
+      items: [
+        { text: 'Git', link: '/git' },
+        { text: 'Markdown', link: '/markdown' },
+        { text: 'Linux', link: '/linux' },
+        { text: '未分类', link: '/uncategorized' },
+      ],
+    },
+  ];
+}
+
+function sidebarArticles(): DefaultTheme.SidebarItem[] {
+  return [];
+}
+
+function sidebarProjects(): DefaultTheme.SidebarItem[] {
+  return [];
+}
