@@ -69,11 +69,13 @@ location /api {
 <button :class="$style.btn" @click="sendMessage">发送postMessage消息</button>
 </template>
 <template v-else>
-<a :href="'http://demo.codingmo.com/#' + window.location.href">点击这里进行postMessage测试</a>
+<a :href="testUrl" target="_blank">点击这里进行postMessage测试</a>
 </template>
 
 <script lang="ts" setup>
 const inIFrame = window.self !== window.top; // 判断是否在iframe中
+
+const testUrl = 'http://demo.codingmo.com/#' + window.location.href; // 目标站点地址
 
 const sendMessage = () => {
   const targetOrigin = '*'; // 替换为目标域名
