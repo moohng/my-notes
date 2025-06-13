@@ -6,13 +6,16 @@ hero:
   name: "大前端知识库"
   text: "以前端为主的全栈知识库"
   tagline: 大前端无所不能
+  # image:
+  #   src: /logo.svg
+  #   alt: Logo
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
+      text: 开始阅读
       link: /api-examples
+    - theme: alt
+      text: 如何写作？
+      link: https://vitepress.dev/zh/guide/markdown
 
 features:
   - title: Feature A
