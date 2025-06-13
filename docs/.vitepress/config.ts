@@ -1,33 +1,72 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  lang: 'zh-CN',
-  title: "大前端知识库",
+  lang: 'zh-Hans',
+  title: '大前端知识库',
   // titleTemplate: '大前端知识库 - :title',
-  description: "整理和打造一个大前端个人知识库，以js、css、html为基础，涵盖了React、Vue、uniapp等前端主流框架，以及flutter跨平台开发，同时，也会包括一些Java Springboot等后端相关开发知识。",
+  description:
+    '整理和打造一个大前端个人知识库，以js、css、html为基础，涵盖了React、Vue、uniapp等前端主流框架，以及flutter跨平台开发，同时，也会包括一些Java Springboot等后端相关开发知识。',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'keywords', content: '前端知识库, 大前端, 前端开发, JavaScript, CSS, HTML, React, Vue, uniapp, Flutter, Springboot' }],
+    [
+      'meta',
+      {
+        name: 'keywords',
+        content: '前端知识库, 大前端, 前端开发, JavaScript, CSS, HTML, React, Vue, uniapp, Flutter, Springboot',
+      },
+    ],
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '示例', link: '/markdown-examples' }
+      { text: '笔记', link: '/notes' },
+      { text: '文章', link: '/articles' },
+      { text: '作品', link: '/projects' },
     ],
     sidebar: [
       {
-        text: '示例',
+        text: '介绍',
         items: [
-          { text: 'Markdown 示例', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
+          { text: '为什么要写这个知识库？', link: '/why' },
+        ],
+      },
+      {
+        text: '大前端',
+        collapsed: false,
+        items: [
+          { text: 'React', link: '/react' },
+          { text: 'Vue', link: '/vue' },
+          { text: 'uniapp', link: '/uniapp' },
+          { text: 'Flutter', link: '/flutter' },
+        ],
+      },
+      {
+        text: '服务端',
+        items: [
+          { text: 'Java Springboot', link: '/springboot' },
+          { text: 'MySQL', link: '/mysql' },
+        ],
+      },
+      {
+        text: '其他',
+        items: [
+          { text: 'Git', link: '/git' },
+          { text: 'Markdown', link: '/markdown' },
+          { text: 'Linux', link: '/linux' },
+        ],
+      },
+      {
+        text: '未分类',
+        items: [],
+      },
     ],
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/moohng/my-notes' }
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/moohng/my-notes' }],
+    editLink: {
+      pattern: 'https://github.com/moohng/my-notes/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页面',
+    },
     search: {
       provider: 'local',
       options: {
@@ -54,12 +93,26 @@ export default defineConfig({
       next: '下一篇',
     },
     lastUpdated: {
-      text: '上次更新',
+      text: '最后更新于',
     },
     outline: {
       label: '页内导航',
+      level: 'deep',
     },
+    notFound: {
+      title: '页面未找到',
+      quote: '但如果你不改变方向，并且继续寻找，你可能最终会到达你所前往的地方。',
+      linkLabel: '前往首页',
+      linkText: '带我回首页',
+    },
+    langMenuLabel: '多语言',
+    returnToTopLabel: '回到顶部',
+    sidebarMenuLabel: '菜单',
+    darkModeSwitchLabel: '主题',
+    lightModeSwitchTitle: '切换到浅色模式',
+    darkModeSwitchTitle: '切换到深色模式',
+    skipToContentLabel: '跳转到内容',
   },
   cleanUrls: true,
   lastUpdated: true,
-})
+});

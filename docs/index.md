@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 开始阅读
-      link: /api-examples
+      link: /why
     - theme: alt
       text: 如何写作？
       link: https://vitepress.dev/zh/guide/markdown
