@@ -21,7 +21,7 @@ title: 跨域问题怎么处理？
 
 ## 解决方案
 
-#### 1. JSONP <Badge text="不推荐" type="danger"/>
+#### 1. JSONP <Badge text="不推荐" type="danger"></Badge>
 
 利用了`script`标签不受同源策略限制的特点，通过动态创建`script`标签来实现跨域请求。服务端需要返回一个函数回调的js代码，并将数据作为参数传入，并且客户端需要提前定义好这个回调函数。因此，此方法只能发送GET请求。现在已不推荐使用。
 
@@ -68,6 +68,7 @@ location /api {
 
 <button :class="$style.btn" @click="sendMessage">发送postMessage消息</button>
 </template>
+
 <template v-else>
 <a :href="testUrl" target="_blank">点击这里进行postMessage测试</a>
 </template>
