@@ -79,12 +79,10 @@ import IFBrowser from './components/IFBrowser.vue';
 
 const message = ref('');
 
-const sendMessage = () => {
-  const targetOrigin = '*'; // 替换为目标域名
-  
+const sendMessage = () => {  
   // 发送消息到目标窗口
-  window.parent.postMessage(message, targetOrigin);
-  console.log('postMessage message sent:', message);
+  console.log('postMessage message sent:', message.value);
+  window.parent.postMessage(message.value, '*');
 };
 </script>
 

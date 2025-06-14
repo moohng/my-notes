@@ -3,9 +3,9 @@
     <slot></slot>
   </template>
 
-<template v-else>
-  <a :href="testUrl" target="_blank">点击这里进行postMessage测试</a>
-</template>
+  <template v-else>
+    <a :href="testUrl" target="_blank">点击这里进行postMessage测试</a>
+  </template>
 </template>
 
 <script lang="ts" setup>
