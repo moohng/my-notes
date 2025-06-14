@@ -21,11 +21,11 @@ title: 跨域问题怎么处理？
 
 ## 解决方案
 
-#### 1. JSONP <Badge text="不推荐" type="danger"></Badge>
+### 1. JSONP <Badge text="不推荐" type="danger"></Badge>
 
 利用了`script`标签不受同源策略限制的特点，通过动态创建`script`标签来实现跨域请求。服务端需要返回一个函数回调的js代码，并将数据作为参数传入，并且客户端需要提前定义好这个回调函数。因此，此方法只能发送GET请求。现在已不推荐使用。
 
-#### 2. CORS
+### 2. CORS
 
 CORS（Cross-Origin Resource Sharing）是W3C标准，它允许浏览器向跨源服务器发送Ajax请求，从而克服了同源策略的限制。
 
@@ -36,7 +36,7 @@ CORS需要服务端通过设置HTTP响应头来允许跨域请求。常用的响
 - `Access-Control-Allow-Headers`：允许跨域请求的头部
 - `Access-Control-Allow-Credentials`：允许跨域携带cookie
 
-#### 3. 反向代理
+### 3. 反向代理
 
 反向代理是代理服务器将客户端发送的请求转发到真实的服务器端，并将真实的服务器端的响应返回给客户端，从而避免了不同源的问题。
 
@@ -54,43 +54,16 @@ location /api {
 }
 ```
 
-#### 其他方案
+### 其他方案
 
 - WebSocket：WebSocket协议允许跨域通信，但需要服务端支持，一般不会用它来解决http的跨域问题。
 - postMessage：window.postMessage()方法可以实现客户端之间的跨域通信。
 - document.domain：通过设置document.domain可以实现不同子域之间的跨域通信。
 
-<template v-if="inIFrame">
+<ClientOnly>
+  <PostMessageTest/>
+</ClientOnly>
 
-## 测试
-
-#### 跨域发送postMessage消息
-
-<button :class="$style.btn" @click="sendMessage">发送postMessage消息</button>
-</template>
-
-<template v-else>
-<a :href="testUrl" target="_blank">点击这里进行postMessage测试</a>
-</template>
-
-<script lang="ts" setup>
-const inIFrame = window.self !== window.top; // 判断是否在iframe中
-
-const testUrl = 'http://demo.codingmo.com/#' + window.location.href; // 目标站点地址
-
-const sendMessage = () => {
-  const targetOrigin = '*'; // 替换为目标域名
-  const message = { text: 'Hello from another domain!' };
-  
-  // 发送消息到目标窗口
-  window.parent.postMessage(message, targetOrigin);
-  console.log('postMessage message sent:', message);
-};
+<script setup>
+import PostMessageTest from './components/PostMessageTest.vue';
 </script>
-
-<style module>
-.btn {
-  padding: 4px 12px;
-  border: 1px solid #ccc;
-}
-</style>
