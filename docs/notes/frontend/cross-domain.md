@@ -61,9 +61,36 @@ location /api {
 - document.domain：通过设置document.domain可以实现不同子域之间的跨域通信。
 
 <ClientOnly>
-  <PostMessageTest/>
+  <IFBrowser>
+
+## 测试
+
+::: info 向父站点发送跨域postMessage消息
+<input type="text" v-model="message" placeholder="输入消息内容" />
+<button :class="$style.btn" @click="sendMessage">发送</button>
+:::
+
+  </IFBrowser>
 </ClientOnly>
 
 <script setup>
-import PostMessageTest from './components/PostMessageTest.vue';
+import { ref } from 'vue';
+import IFBrowser from './components/IFBrowser.vue';
+
+const message = ref('');
+
+const sendMessage = () => {
+  const targetOrigin = '*'; // 替换为目标域名
+  
+  // 发送消息到目标窗口
+  window.parent.postMessage(message, targetOrigin);
+  console.log('postMessage message sent:', message);
+};
 </script>
+
+<style module>
+.btn {
+  padding: 4px 12px;
+  border: 1px solid #ccc;
+}
+</style>
