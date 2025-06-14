@@ -97,6 +97,7 @@ function sidebarNotes(): DefaultTheme.SidebarItem[] {
       base: '/notes/frontend/',
       items: [
         { text: '跨域问题', link: 'cross-domain' },
+        { text: '跨页面通信', link: 'cross-page-communication' },
         { text: 'uniapp', link: '/uniapp' },
         { text: 'Flutter', link: '/flutter' },
       ],
