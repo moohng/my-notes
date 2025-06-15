@@ -36,6 +36,13 @@ CORS需要服务端通过设置HTTP响应头来允许跨域请求。常用的响
 - `Access-Control-Allow-Headers`：允许跨域请求的头部
 - `Access-Control-Allow-Credentials`：允许跨域携带cookie
 
+<template v-if="!isProd">
+
+::: info 跨域请求测试
+<MyButton class="my-2" @click="testCors">发送跨域请求</MyButton>
+:::
+</template>
+
 ### 3. 反向代理
 
 反向代理是代理服务器将客户端发送的请求转发到真实的服务器端，并将真实的服务器端的响应返回给客户端，从而避免了不同源的问题。
@@ -67,7 +74,7 @@ location /api {
 
 ::: info 向父站点发送跨域postMessage消息
 <input type="text" v-model="message" placeholder="输入消息内容" />
-<button :class="$style.btn" @click="sendMessage">发送</button>
+<MyButton class="btn" @click="sendMessage">发送</MyButton>
 :::
 
   </IFBrowser>
@@ -84,11 +91,11 @@ const sendMessage = () => {
   console.log('postMessage message sent:', message.value);
   window.parent.postMessage(message.value, '*');
 };
-</script>
 
-<style module>
-.btn {
-  padding: 4px 12px;
-  border: 1px solid #ccc;
-}
-</style>
+const testCors = () => {
+  fetch('http://localhost:3000/hello')
+   .then(res => res.json())
+   .then(data => console.log(data))
+   .catch(err => console.error(err));
+};
+</script>
