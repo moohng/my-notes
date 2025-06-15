@@ -39,7 +39,7 @@ CORS需要服务端通过设置HTTP响应头来允许跨域请求。常用的响
 <template v-if="!isProd">
 
 ::: info 跨域请求测试
-<MyButton class="my-2" @click="testCors">发送跨域请求</MyButton>
+<MyButton class="my-2" primary @click="testCors">发送跨域请求</MyButton>
 :::
 </template>
 

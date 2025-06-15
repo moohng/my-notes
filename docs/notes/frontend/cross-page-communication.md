@@ -41,7 +41,7 @@ window.addEventListener('storage', function(e) {
 
 将当前页面用一个新标签页/窗口打开，然后点击下面按钮进行测试。
 
-<button @click="switchTheme">主题切换</button>
+<MyButton @click="switchTheme">主题切换</MyButton>
 
 <p v-if="theme">这条消息只会在另一侧窗口发生变化：{{ theme }}</p>
 
