@@ -23,6 +23,7 @@ hero:
 features:
   - title: 笔记
     details: 记录开发中遇到的问题和解决方案，分享自己总结的经验。
+    link: /notes/frontend/cross-domain
   - title: 文章
     details: 分享有趣的技术文章，用于快速传播和获取流量。
   - title: 作品

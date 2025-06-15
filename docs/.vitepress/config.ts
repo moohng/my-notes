@@ -21,7 +21,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '笔记', link: '/notes', activeMatch: '/notes/' },
+      { text: '笔记', link: '/notes/frontend/cross-domain', activeMatch: '/notes/' },
       { text: '文章', link: '/articles', activeMatch: '/articles/' },
       { text: '作品', link: '/projects', activeMatch: '/projects/' },
     ],
@@ -114,7 +114,7 @@ function sidebarNotes(): DefaultTheme.SidebarItem[] {
       text: '其他',
       base: '/notes/other/',
       items: [
-        { text: 'Git', link: '/git' },
+        { text: 'Git相关', link: '/about-git' },
         { text: 'Markdown', link: '/markdown' },
         { text: 'Linux', link: '/linux' },
         { text: '未分类', link: '/uncategorized' },
